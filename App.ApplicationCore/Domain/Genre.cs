@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace App.ApplicationCore.Domain
 {
-    internal class Genre
+    public enum Genre
     {
+        Femme,
+        Homme
     }
 }

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace App.ApplicationCore.Domain
 {
-    internal class PartiePolitique
+    public class PartiePolitique
     {
+        public DateTime DateFondation { get; set; }
+        public string Details { get; set; }
+        public string Nom { get; set; }
+        public int PartiePolitiqueId { get; set; }
+        public virtual IList<Election> Elections { get; set; }
+        public virtual IList<Vote> Votes { get; set; }
     }
 }
