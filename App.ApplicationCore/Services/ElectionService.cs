@@ -29,5 +29,10 @@ namespace App.ApplicationCore.Services
             }).Count();
             return (float)electeursJeunesCount / GetElecteursCount(dateElection) * 100;
         }
+
+        int IElectionService.GetElecteursJeunesPercent(DateTime dateElection)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
