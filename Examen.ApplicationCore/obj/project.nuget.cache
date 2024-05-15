@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QJly3f+vdJCqhPDDhA463ob5d+XewpryZgLMkLJv7d45B/hSQvceTM7BjCHXPgJfkdC8BymsEM6+pDNaXhnaOA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lenovo\\Downloads\\SolutionVideExamen\\ExamenImp\\Examen.ApplicationCore\\Examen.ApplicationCore.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.27\\microsoft.entityframeworkcore.abstractions.6.0.27.nupkg.sha512"
+  ],
+  "logs": []
+}
