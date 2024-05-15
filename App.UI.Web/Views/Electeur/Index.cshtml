@@ -1,0 +1,55 @@
+﻿@model IEnumerable<App.ApplicationCore.Domain.Electeur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="Index">
+    Rechercher par Cin :
+    <input name="cin" />
+    <input type="submit" value="GO" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonGenre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonGenre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ElecteurId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ElecteurId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ElecteurId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

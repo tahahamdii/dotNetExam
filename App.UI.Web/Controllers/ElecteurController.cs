@@ -2,6 +2,7 @@
 using App.ApplicationCore.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace App.UI.Web.Controllers
 {
@@ -21,7 +22,14 @@ namespace App.UI.Web.Controllers
         // GET: ElecteurController
         public ActionResult Index()
         {
-            return View();
+            return View(electeurService.GetAll());
+        }
+
+        [HttpPost]
+
+        public ActionResult Index(string cin)
+        {
+            return View(cin == null ? electeurService.GetAll() : electeurService.GetMany(e => e.CIN != null && e.CIN.Contains(cin)));
         }
 
         // GET: ElecteurController/Details/5
@@ -82,16 +90,19 @@ namespace App.UI.Web.Controllers
         // GET: ElecteurController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(electeurService.GetById(id));
         }
 
         // POST: ElecteurController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Electeur electeur)
         {
             try
             {
+                electeur.ElecteurId = id;
+                electeurService.Delete(electeur);
+                unitOfWork.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
