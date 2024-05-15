@@ -16,7 +16,8 @@ namespace App.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Election> builder)
         {
-            builder.HasMany(e => e.Electeurs).WithMany(e => e.Elections).UsingEntity(c => c.ToTable("ParticipationElection"));
+            builder.HasMany(e => e.Electeurs).WithMany(e => e.Elections).
+                UsingEntity(c => c.ToTable("ParticipationElection"));
         }
 
     }

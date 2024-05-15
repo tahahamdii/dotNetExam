@@ -1,4 +1,5 @@
-﻿@model App.ApplicationCore.Domain.Electeur
+﻿@using App.ApplicationCore.Domain;
+@model App.ApplicationCore.Domain.Electeur
 
 @{
     ViewData["Title"] = "Create";
@@ -23,9 +24,37 @@
                 <span asp-validation-for="DateNaissance" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ElecteurId" class="control-label"></label>
+                <input asp-for="ElecteurId" class="form-control" />
+                <span asp-validation-for="ElecteurId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="MonGenre" class="control-label"></label>
-                <select asp-for="MonGenre" class="form-control"></select>
+                <select asp-for="MonGenre" class="form-control" asp-items="Html.GetEnumSelectList<Genre>()">
+                    <option>Select Genre</option>
+                </select>
                 <span asp-validation-for="MonGenre" class="text-danger"></span>
+            </div>
+            <div style="color:blue">BUREAU DE VOTE:</div>
+            <div class="form-group">
+                <label asp-for="MonBureauVote.Ville" class="control-label"></label>
+                <input asp-for="MonBureauVote.Ville" class="form-control" />
+                <span asp-validation-for="MonBureauVote.Ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonBureauVote.Ecole" class="control-label"></label>
+                <input asp-for="MonBureauVote.Ecole" class="form-control" />
+                <span asp-validation-for="MonBureauVote.Ecole" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonBureauVote.Gouvernorat" class="control-label"></label>
+                <input asp-for="MonBureauVote.Gouvernorat" class="form-control" />
+                <span asp-validation-for="MonBureauVote.Gouvernorat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonBureauVote.NumSalle" class="control-label"></label>
+                <input asp-for="MonBureauVote.NumSalle" class="form-control" />
+                <span asp-validation-for="MonBureauVote.NumSalle" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

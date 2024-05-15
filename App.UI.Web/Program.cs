@@ -9,6 +9,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
+builder.Services.AddTransient<IElectionService, ElectionService>();
+builder.Services.AddTransient<IVoteService, VoteService>();
 
 var app = builder.Build();
 

@@ -1,10 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using App.ApplicationCore.Domain;
+using App.ApplicationCore.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.UI.Web.Controllers
 {
     public class ElecteurController : Controller
     {
+        IUnitOfWork unitOfWork;
+        IService<Electeur> electeurService;
+
+        public ElecteurController(IUnitOfWork unitOfWork, IService<Electeur> electeurService)
+        {
+            this.unitOfWork = unitOfWork;
+            this.electeurService = electeurService;
+        }
+
+
+
         // GET: ElecteurController
         public ActionResult Index()
         {
@@ -26,10 +39,17 @@ namespace App.UI.Web.Controllers
         // POST: ElecteurController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Electeur electeur)
         {
             try
             {
+                if(!ModelState.IsValid)
+                {
+                    return View();
+
+                }
+                electeurService.Add(electeur);
+                unitOfWork.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
