@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Examen.ApplicationCore.Domain.PretLivre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<fieldset>
+    <legend>Search: </legend>
+<form asp-action="Index">
+    <label>Date Debut :</label>
+        <input type="text" name="filter1" />
+    <label>Date Fin :</label>
+        <input type="text" name="filter2" />
+	    <input type="submit" value="Search"/>
+</form>
+		
+</fieldset>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDebut)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFin)
+            </th>
+            <th>
+                Livre
+            </th>
+            <th>
+                Abonne
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DateDebut)
+
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.DateFin)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MyLivre.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MyAbonne.Nom)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
